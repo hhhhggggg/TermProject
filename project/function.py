@@ -19,9 +19,9 @@ def AvailableZone():
     Available_Zone_Arr= ec2client.describe_availability_zones().get('AvailabilityZones')
     for ZoneInfo in Available_Zone_Arr:
         print(
-            'Id : '+ZoneInfo.get('ZoneId'),
-            'Region : '+ZoneInfo.get('RegionName'),
-            'Zone : '+ZoneInfo.get('ZoneName')
+            '[Id] : '+ZoneInfo.get('ZoneId'),
+            '[Region] : '+ZoneInfo.get('RegionName'),
+            '[Zone] : '+ZoneInfo.get('ZoneName')
         )
 
 
@@ -38,8 +38,16 @@ def AvailableRegions():
     print('\nAvailable Regions\n')
     AvailableRegionArr = ec2client.describe_regions().get('Regions')
     for RegionInfo in AvailableRegionArr:
-        print('Region : '+RegionInfo.get('RegionName'),
-              ' Endpoint : '+RegionInfo.get('Endpoint') + '\n')
+        print('[Region] : '+RegionInfo.get('RegionName'),
+              ' [Endpoint] : '+RegionInfo.get('Endpoint'))
+
+
+def StopInstance():
+    print('\nStopInstance\n')
+    Instance_list()
+    id = str(input('Enter instance id : '))
+    ec2client.stop_instances(InstanceIds=[id, ])
+    print("Successfully stopped instance" + id)
 
 # Instance list menu
 def Instance_list():

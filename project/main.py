@@ -1,16 +1,21 @@
 import boto3
 import function
 
-print('--------------------------------------------------\n')
-print('        Amazon AWS Control Panel using SKD\n')
-print('--------------------------------------------------\n')
-print('1. list instance             2. available zones\n')
-print('3. start instance            4. available regions\n')
-print('5. stop instance             6. create instance\n')
-print('7. reboot instance           8. list images\n')
-print('                            99. quit\n')
-print('--------------------------------------------------\n')
-print('--------------------------------------------------\n')
+
+def Menu():
+    print('--------------------------------------------------\n')
+    print('        Amazon AWS Control Panel using SKD\n')
+    print('--------------------------------------------------\n')
+    print('1. list instance             2. available zones\n')
+    print('3. start instance            4. available regions\n')
+    print('5. stop instance             6. create instance\n')
+    print('7. reboot instance           8. list images\n')
+    print('                            99. quit\n')
+    print('--------------------------------------------------\n')
+    print('--------------------------------------------------\n')
+
+
+Menu()
 
 while True:
     num = int(input('Enter an Integer : '))
@@ -33,15 +38,6 @@ while True:
 
     elif num == 99:
         break
-    print('--------------------------------------------------\n')
-    print('        Amazon AWS Control Panel using SKD\n')
-    print('--------------------------------------------------\n')
-    print('1. list instance             2. available zones\n')
-    print('3. start instance            4. available regions\n')
-    print('5. stop instance             6. create instance\n')
-    print('7. reboot instance           8. list images\n')
-    print('                            99. quit\n')
-    print('--------------------------------------------------\n')
-    print('--------------------------------------------------\n')
 
+    Menu()
 print('Quit')
