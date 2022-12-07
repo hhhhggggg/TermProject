@@ -9,14 +9,14 @@ def ListInstance():
     print('\nListInstance\n')
     for instance in ec2.instances.all():
         print("ID : "+instance.id + '\n',
-              "Type : "+instance.instance_type+ '\n',
-              "Ami : "+instance.image.id+ '\n',
-              "State : "+instance.state.get('Name')+ '\n')
+              "Type : "+instance.instance_type + '\n',
+              "Ami : "+instance.image.id + '\n',
+              "State : "+instance.state.get('Name') + '\n')
 
 
 def AvailableZone():
     print('\nAvailable Zone\n')
-    Available_Zone_Arr= ec2client.describe_availability_zones().get('AvailabilityZones')
+    Available_Zone_Arr = ec2client.describe_availability_zones().get('AvailabilityZones')
     for ZoneInfo in Available_Zone_Arr:
         print(
             '[Id] : '+ZoneInfo.get('ZoneId'),
@@ -33,7 +33,6 @@ def StartInstance():
     print("Successfully started instance" + id)
 
 
-
 def AvailableRegions():
     print('\nAvailable Regions\n')
     AvailableRegionArr = ec2client.describe_regions().get('Regions')
@@ -48,6 +47,28 @@ def StopInstance():
     id = str(input('Enter instance id : '))
     ec2client.stop_instances(InstanceIds=[id, ])
     print("Successfully stopped instance" + id)
+
+
+def CreateInstance():
+    ec2.create_instances(
+        ImageId='ami-0eddbd81024d3fbdd',
+        InstanceType='t2.micro',
+        KeyName='keypair',
+        MinCount=1,
+        MaxCount=1
+    )
+    print('Successfully Create Instance\n')
+
+
+def RebootInstance():
+    print('\nRebootInstance\n')
+    Instance_list()
+    id = str(input('Enter instance id : '))
+    response = ec2client.reboot_instances(
+        InstanceIds=[id, ]
+    )
+    print('Susccess', response)
+
 
 # Instance list menu
 def Instance_list():
