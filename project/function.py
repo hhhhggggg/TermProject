@@ -69,15 +69,25 @@ def RebootInstance():
     )
     print('Susccess', response)
 
+
 def ListImages():
     print('\nListImages\n')
     AmiImg = ec2client.describe_images(Owners=['self'])
     for image in AmiImg['Images']:
-        print ('[ImageID] '+image['ImageId'],' [Owner Id] '+image['OwnerId'],' [State] ' + image['State'],' [Name] '+image['Name'],)
+        print('[ImageID] '+image['ImageId'], ' [Owner Id] '+image['OwnerId'],
+              ' [State] ' + image['State'], ' [Name] '+image['Name'],)
 
-#추가 구현
+# 추가 구현
 
 
+def TerminateInstance():
+    print('\nTerminate Instance\n')
+    Instance_list()
+    id = str(input('Enter instance id : '))
+    ec2client.terminate_instances(
+        InstanceIds=[id,]
+    )
+    print(id + ' is terminated')
 
 
 # Instance list menu

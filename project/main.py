@@ -10,7 +10,7 @@ def Menu():
     print('3. start instance            4. available regions\n')
     print('5. stop instance             6. create instance\n')
     print('7. reboot instance           8. list images\n')
-    print('                            99. quit\n')
+    print('9. terminate instance       99. quit\n')
     print('--------------------------------------------------\n')
     print('--------------------------------------------------\n')
 
@@ -35,7 +35,8 @@ while True:
         function.RebootInstance()
     elif num == 8:
         function.ListImages()
-
+    elif num == 9:
+        function.TerminateInstance()
     elif num == 99:
         break
 
